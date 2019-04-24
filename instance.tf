@@ -1,6 +1,13 @@
 resource "aws_instance" "web" {
-  ami           = "ami-07683a44e80cd32c5"
-  instance_type = "t2.micro"
-  count = 2
-  key_name = "${aws_key_pair.ec2-ssh-key2.key_name}"
+  ami           = "${var.ami}"
+  instance_type = "${var.instance_type}"
+  count = "${var.count}"
+  key_name = "${var.key_name}"
+  
+  tags {
+    Name = "terraform-state-${var.Created_by}"
+    Env  = "${var.ENV}"
+    Dept = "${var.Dept}"
+    Created_by = "${var.Created_by}"
+  }
 }
