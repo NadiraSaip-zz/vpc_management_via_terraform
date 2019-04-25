@@ -5,8 +5,8 @@ resource "aws_instance" "web" {
   key_name = "${var.key_name}"
   
   tags {
-    Name = "terraform-state-${var.Created_by}"
-    Env  = "${var.ENV}"
+    Name = "terraform-state-${var.Created_by}-${count.index +1}"
+    Env  = "${var.Env}"
     Dept = "${var.Dept}"
     Created_by = "${var.Created_by}"
   }
